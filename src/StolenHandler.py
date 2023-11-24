@@ -22,8 +22,8 @@ class StolenGuardHandler:
         handler_text_link = MessageHandler(filters.Entity("text_link"), self.sentence_text_link)
         handler_bestmemer = CommandHandler("bestmemers", self.response_bestmemer)
         
-        self.application.add_handler(handler_url)
-        self.application.add_handler(handler_text_link)
+        #self.application.add_handler(handler_url)
+        #self.application.add_handler(handler_text_link)
         self.application.add_handler(handler_bestmemer)
 
         self.application.run_polling(allowed_updates=Update.ALL_TYPES)
@@ -43,7 +43,7 @@ class StolenGuardHandler:
         """
         await self.inform_best_memer(update, context)
 
-    """ ---------- Method ---------- """
+    """ ---------- Methods ---------- """
 
     async def inform_best_memer(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         """ Fonction that :
@@ -110,7 +110,7 @@ class BotResponse(ABC):
         return f'No such link allowed here @{from_user}'
 
     def wait():
-        return f'Command proceded. Pliz wait a bit :)'
+        return f'Command processing. Pliz wait a bit :)'
     
     def best_memers(best_memers, last_days):
         final_str = f'🗿 Best memer of the last {last_days} days are : \n'
@@ -128,6 +128,7 @@ class ForbidenURL(filters.MessageFilter):
         Return :
             bool : true if yes. false if no.
         """
+        print(message)
         forbiden_site = {
             't.me'
         }
